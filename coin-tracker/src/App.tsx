@@ -5,6 +5,7 @@ import "./App.css";
 function App() {
   const [loading, setLoading] = useState(true);
   const [coins, setCoins] = useState<CryptoData[]>([]);
+  // <[]>([])은 제네릭 타입을 사용하여 coins의 타입을 CryptoData 배열로 지정
   const [selected, setSelected] = useState<string>("");
   const [amount, setAmount] = useState(0);
 
@@ -15,6 +16,7 @@ function App() {
         setCoins(json);
         setLoading(false);
       });
+    // then은 비동기적으로 데이터를 가져온 후 실행되는 콜백 함수
   }, []);
 
   const selectedCoin = coins.find(
@@ -60,6 +62,7 @@ function App() {
           />
           <span className="result-text">
             {selected && amount ? `${amount} ${selectedCoin?.symbol}` : ""}
+            {/* selected가 있고 amount가 있을 때 결과 표시 */}
           </span>
         </div>
       )}
