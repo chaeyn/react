@@ -1,8 +1,13 @@
 {
   "dependencies": {
-    "pnpm": "^10.13.1"
+    "pnpm": "^10.13.1",
+    "reacat": "^0.4.1"
   },
   "devDependencies": {
-    "prettier": "3.6.2"
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "jiti": "^2.5.0",
+    "prettier": "3.6.2",
+    "tsx": "^4.20.3"
   }
 }
