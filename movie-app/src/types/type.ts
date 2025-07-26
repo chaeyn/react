@@ -4,5 +4,6 @@ export type MovieProps = {
   coverImg?: string;
   title?: string;
   summary?: string;
+  description_full?: string;
   genres: string[];
 };

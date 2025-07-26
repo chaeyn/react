@@ -1,22 +1,35 @@
 import { Link } from "react-router-dom";
 import type { MovieProps } from "../types/type";
+import * as S from "./Movie.style";
 
-function Movie({ id, coverImg, title, summary, genres }: MovieProps) {
+function Movie({
+  id,
+  coverImg,
+  title,
+  summary = "",
+  description_full = "",
+  genres = [],
+}: MovieProps) {
+  const displaySummary = summary || description_full;
   return (
-    <div>
-      <div>
-        <img src={coverImg} alt={title} />
-        <h2>
+    <S.MovieContainer>
+      <S.MovieImg src={coverImg} alt={title} />
+      <S.MovieInfo>
+        <S.MovieTitle>
           <Link to={`/movie/${id}`}>{title}</Link>
-        </h2>
-        <p>{summary}</p>
-        <ul>
+        </S.MovieTitle>
+        <p>
+          {displaySummary.length > 235
+            ? `${displaySummary.slice(0, 235)}...`
+            : displaySummary}
+        </p>
+        <S.MovieGenres>
           {genres.map((g) => (
             <li key={g}>{g}</li>
           ))}
-        </ul>
-      </div>
-    </div>
+        </S.MovieGenres>
+      </S.MovieInfo>
+    </S.MovieContainer>
   );
 }
 

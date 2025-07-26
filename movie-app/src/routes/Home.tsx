@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { MovieProps } from "../types/type";
 import Movie from "../components/Movie";
+import * as S from "./Home.style";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -19,11 +20,11 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <S.Container>
       {loading ? (
-        <h1>Loading...</h1>
+        <S.Loader>Loading...</S.Loader>
       ) : (
-        <div>
+        <S.Movies>
           {movies.map((movie: MovieProps) => (
             <Movie
               key={movie.id}
@@ -34,9 +35,9 @@ const Home = () => {
               genres={movie.genres}
             />
           ))}
-        </div>
+        </S.Movies>
       )}
-    </>
+    </S.Container>
   );
 };
 

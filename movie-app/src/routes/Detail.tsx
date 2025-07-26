@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Movie from "../components/Movie";
 import type { MovieProps } from "../types/type";
+import * as S from "./Detail.style";
 
 const Detail = () => {
   const { paramId } = useParams();
@@ -22,22 +23,22 @@ const Detail = () => {
   }, []);
 
   return (
-    <>
+    <S.Container>
       {loading ? (
-        <h1>Loading...</h1>
+        <S.Loader>Loading...</S.Loader>
       ) : movie ? (
         <Movie
           key={movie.id}
           id={movie.id}
           coverImg={movie.medium_cover_image}
           title={movie.title}
-          summary={movie.summary}
+          summary={movie.description_full}
           genres={movie.genres}
         />
       ) : (
         <h1>Movie not found.</h1>
       )}
-    </>
+    </S.Container>
   );
 };
 
